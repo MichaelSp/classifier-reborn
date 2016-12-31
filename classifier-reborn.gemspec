@@ -26,7 +26,11 @@ Gem::Specification.new do |s|
   s.rdoc_options     = ['--charset=UTF-8']
   s.extra_rdoc_files = %w(README.markdown LICENSE)
 
-  s.add_runtime_dependency('fast-stemmer', '~> 1.0')
+  if RUBY_PLATFORM == 'java'
+    s.add_runtime_dependency('jruby-stemmer', '~> 0.0.1')
+  else
+    s.add_runtime_dependency('fast-stemmer', '~> 1.0')
+  end
 
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
